@@ -1,0 +1,1520 @@
+# WechatApi
+
+All URIs are relative to *https://api.zashigaofa.cn*
+
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**wechatDecrypt**](WechatApi.md#wechatDecrypt) | **GET** /Wechat/{appKey}/Decrypt | 小程序-解密数据 |
+| [**wechatDecryptWithHttpInfo**](WechatApi.md#wechatDecryptWithHttpInfo) | **GET** /Wechat/{appKey}/Decrypt | 小程序-解密数据 |
+| [**wechatGenerateScheme**](WechatApi.md#wechatGenerateScheme) | **POST** /Wechat/{appKey}/GenerateScheme | 小程序-生成scheme码(该接口用于获取小程序 scheme 码，适用于短信、邮件、外部网页、微信内等拉起小程序的业务场景) |
+| [**wechatGenerateSchemeWithHttpInfo**](WechatApi.md#wechatGenerateSchemeWithHttpInfo) | **POST** /Wechat/{appKey}/GenerateScheme | 小程序-生成scheme码(该接口用于获取小程序 scheme 码，适用于短信、邮件、外部网页、微信内等拉起小程序的业务场景) |
+| [**wechatJSCode2Session**](WechatApi.md#wechatJSCode2Session) | **GET** /Wechat/{appKey}/JSCode2Session | 小程序-登录凭证校验 |
+| [**wechatJSCode2SessionWithHttpInfo**](WechatApi.md#wechatJSCode2SessionWithHttpInfo) | **GET** /Wechat/{appKey}/JSCode2Session | 小程序-登录凭证校验 |
+| [**wechatJSConfig**](WechatApi.md#wechatJSConfig) | **GET** /Wechat/{appKey}/JSConfig | 公众号H5-JS SDK Config |
+| [**wechatJSConfigWithHttpInfo**](WechatApi.md#wechatJSConfigWithHttpInfo) | **GET** /Wechat/{appKey}/JSConfig | 公众号H5-JS SDK Config |
+| [**wechatSubscribeMSG**](WechatApi.md#wechatSubscribeMSG) | **POST** /Wechat/{appKey}/SubscribeMSG | 公众号H5-发送一次性订阅消息 |
+| [**wechatSubscribeMSGWithHttpInfo**](WechatApi.md#wechatSubscribeMSGWithHttpInfo) | **POST** /Wechat/{appKey}/SubscribeMSG | 公众号H5-发送一次性订阅消息 |
+| [**wechatSubscribeSend**](WechatApi.md#wechatSubscribeSend) | **POST** /Wechat/{appKey}/SubscribeSend | 小程序-发送订阅消息 |
+| [**wechatSubscribeSendWithHttpInfo**](WechatApi.md#wechatSubscribeSendWithHttpInfo) | **POST** /Wechat/{appKey}/SubscribeSend | 小程序-发送订阅消息 |
+| [**wechatUrlLinkGenerate**](WechatApi.md#wechatUrlLinkGenerate) | **POST** /Wechat/{appKey}/UrlLinkGenerate | 小程序-生成网页跳转地址(获取小程序 URL Link，适用于短信、邮件、网页、微信内等拉起小程序的业务场景) |
+| [**wechatUrlLinkGenerateWithHttpInfo**](WechatApi.md#wechatUrlLinkGenerateWithHttpInfo) | **POST** /Wechat/{appKey}/UrlLinkGenerate | 小程序-生成网页跳转地址(获取小程序 URL Link，适用于短信、邮件、网页、微信内等拉起小程序的业务场景) |
+| [**wechatUserInfo**](WechatApi.md#wechatUserInfo) | **GET** /Wechat/{appKey}/UserInfo | 公众号H5-获取用户UnionID |
+| [**wechatUserInfoWithHttpInfo**](WechatApi.md#wechatUserInfoWithHttpInfo) | **GET** /Wechat/{appKey}/UserInfo | 公众号H5-获取用户UnionID |
+| [**wechatWXACodeGet**](WechatApi.md#wechatWXACodeGet) | **POST** /Wechat/{appKey}/WXACodeGet | 小程序-获取小程序码 |
+| [**wechatWXACodeGetWithHttpInfo**](WechatApi.md#wechatWXACodeGetWithHttpInfo) | **POST** /Wechat/{appKey}/WXACodeGet | 小程序-获取小程序码 |
+| [**wechatWXACodeGetUnlimited**](WechatApi.md#wechatWXACodeGetUnlimited) | **POST** /Wechat/{appKey}/WXACodeGetUnlimited | 小程序-获取小程序码(无限制) |
+| [**wechatWXACodeGetUnlimitedWithHttpInfo**](WechatApi.md#wechatWXACodeGetUnlimitedWithHttpInfo) | **POST** /Wechat/{appKey}/WXACodeGetUnlimited | 小程序-获取小程序码(无限制) |
+
+
+
+## wechatDecrypt
+
+> StringApiResponse wechatDecrypt(appKey, encryptedData, iv, sessionKey)
+
+小程序-解密数据
+
+解密小程序加密数据
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.WechatApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        WechatApi apiInstance = new WechatApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        String encryptedData = "encryptedData_example"; // String | 加密的数据
+        String iv = "iv_example"; // String | 加密算法的初始向量
+        String sessionKey = "sessionKey_example"; // String | 会话密钥
+        try {
+            StringApiResponse result = apiInstance.wechatDecrypt(appKey, encryptedData, iv, sessionKey);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WechatApi#wechatDecrypt");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **encryptedData** | **String**| 加密的数据 | [optional] |
+| **iv** | **String**| 加密算法的初始向量 | [optional] |
+| **sessionKey** | **String**| 会话密钥 | [optional] |
+
+### Return type
+
+[**StringApiResponse**](StringApiResponse.md)
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+## wechatDecryptWithHttpInfo
+
+> ApiResponse<StringApiResponse> wechatDecrypt wechatDecryptWithHttpInfo(appKey, encryptedData, iv, sessionKey)
+
+小程序-解密数据
+
+解密小程序加密数据
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.ApiResponse;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.WechatApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        WechatApi apiInstance = new WechatApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        String encryptedData = "encryptedData_example"; // String | 加密的数据
+        String iv = "iv_example"; // String | 加密算法的初始向量
+        String sessionKey = "sessionKey_example"; // String | 会话密钥
+        try {
+            ApiResponse<StringApiResponse> response = apiInstance.wechatDecryptWithHttpInfo(appKey, encryptedData, iv, sessionKey);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WechatApi#wechatDecrypt");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **encryptedData** | **String**| 加密的数据 | [optional] |
+| **iv** | **String**| 加密算法的初始向量 | [optional] |
+| **sessionKey** | **String**| 会话密钥 | [optional] |
+
+### Return type
+
+ApiResponse<[**StringApiResponse**](StringApiResponse.md)>
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+
+## wechatGenerateScheme
+
+> StringApiResponse wechatGenerateScheme(appKey, body)
+
+小程序-生成scheme码(该接口用于获取小程序 scheme 码，适用于短信、邮件、外部网页、微信内等拉起小程序的业务场景)
+
+生成小程序的scheme码
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.WechatApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        WechatApi apiInstance = new WechatApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        Object body = null; // Object | scheme码数据，开发参考：https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/qrcode-link/url-scheme/generateScheme.html
+        try {
+            StringApiResponse result = apiInstance.wechatGenerateScheme(appKey, body);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WechatApi#wechatGenerateScheme");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **body** | **Object**| scheme码数据，开发参考：https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/qrcode-link/url-scheme/generateScheme.html | [optional] |
+
+### Return type
+
+[**StringApiResponse**](StringApiResponse.md)
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+## wechatGenerateSchemeWithHttpInfo
+
+> ApiResponse<StringApiResponse> wechatGenerateScheme wechatGenerateSchemeWithHttpInfo(appKey, body)
+
+小程序-生成scheme码(该接口用于获取小程序 scheme 码，适用于短信、邮件、外部网页、微信内等拉起小程序的业务场景)
+
+生成小程序的scheme码
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.ApiResponse;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.WechatApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        WechatApi apiInstance = new WechatApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        Object body = null; // Object | scheme码数据，开发参考：https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/qrcode-link/url-scheme/generateScheme.html
+        try {
+            ApiResponse<StringApiResponse> response = apiInstance.wechatGenerateSchemeWithHttpInfo(appKey, body);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WechatApi#wechatGenerateScheme");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **body** | **Object**| scheme码数据，开发参考：https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/qrcode-link/url-scheme/generateScheme.html | [optional] |
+
+### Return type
+
+ApiResponse<[**StringApiResponse**](StringApiResponse.md)>
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+
+## wechatJSCode2Session
+
+> StringApiResponse wechatJSCode2Session(appKey, jsCode)
+
+小程序-登录凭证校验
+
+校验小程序登录凭证
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.WechatApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        WechatApi apiInstance = new WechatApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        String jsCode = "jsCode_example"; // String | 登录凭证，开发参考：https://dwz.cn/icNajFh7
+        try {
+            StringApiResponse result = apiInstance.wechatJSCode2Session(appKey, jsCode);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WechatApi#wechatJSCode2Session");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **jsCode** | **String**| 登录凭证，开发参考：https://dwz.cn/icNajFh7 | [optional] |
+
+### Return type
+
+[**StringApiResponse**](StringApiResponse.md)
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+## wechatJSCode2SessionWithHttpInfo
+
+> ApiResponse<StringApiResponse> wechatJSCode2Session wechatJSCode2SessionWithHttpInfo(appKey, jsCode)
+
+小程序-登录凭证校验
+
+校验小程序登录凭证
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.ApiResponse;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.WechatApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        WechatApi apiInstance = new WechatApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        String jsCode = "jsCode_example"; // String | 登录凭证，开发参考：https://dwz.cn/icNajFh7
+        try {
+            ApiResponse<StringApiResponse> response = apiInstance.wechatJSCode2SessionWithHttpInfo(appKey, jsCode);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WechatApi#wechatJSCode2Session");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **jsCode** | **String**| 登录凭证，开发参考：https://dwz.cn/icNajFh7 | [optional] |
+
+### Return type
+
+ApiResponse<[**StringApiResponse**](StringApiResponse.md)>
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+
+## wechatJSConfig
+
+> WechatJSConfigResultApiResponse wechatJSConfig(appKey, url)
+
+公众号H5-JS SDK Config
+
+获取公众号H5的JS SDK配置
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.WechatApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        WechatApi apiInstance = new WechatApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        String url = "url_example"; // String | 当前网页的URL
+        try {
+            WechatJSConfigResultApiResponse result = apiInstance.wechatJSConfig(appKey, url);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WechatApi#wechatJSConfig");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **url** | **String**| 当前网页的URL | [optional] |
+
+### Return type
+
+[**WechatJSConfigResultApiResponse**](WechatJSConfigResultApiResponse.md)
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+## wechatJSConfigWithHttpInfo
+
+> ApiResponse<WechatJSConfigResultApiResponse> wechatJSConfig wechatJSConfigWithHttpInfo(appKey, url)
+
+公众号H5-JS SDK Config
+
+获取公众号H5的JS SDK配置
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.ApiResponse;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.WechatApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        WechatApi apiInstance = new WechatApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        String url = "url_example"; // String | 当前网页的URL
+        try {
+            ApiResponse<WechatJSConfigResultApiResponse> response = apiInstance.wechatJSConfigWithHttpInfo(appKey, url);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WechatApi#wechatJSConfig");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **url** | **String**| 当前网页的URL | [optional] |
+
+### Return type
+
+ApiResponse<[**WechatJSConfigResultApiResponse**](WechatJSConfigResultApiResponse.md)>
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+
+## wechatSubscribeMSG
+
+> StringApiResponse wechatSubscribeMSG(appKey, body)
+
+公众号H5-发送一次性订阅消息
+
+发送公众号H5一次性订阅消息
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.WechatApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        WechatApi apiInstance = new WechatApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        Object body = null; // Object | 订阅消息数据，开发参考：https://dwz.cn/IXptek5n
+        try {
+            StringApiResponse result = apiInstance.wechatSubscribeMSG(appKey, body);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WechatApi#wechatSubscribeMSG");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **body** | **Object**| 订阅消息数据，开发参考：https://dwz.cn/IXptek5n | [optional] |
+
+### Return type
+
+[**StringApiResponse**](StringApiResponse.md)
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+## wechatSubscribeMSGWithHttpInfo
+
+> ApiResponse<StringApiResponse> wechatSubscribeMSG wechatSubscribeMSGWithHttpInfo(appKey, body)
+
+公众号H5-发送一次性订阅消息
+
+发送公众号H5一次性订阅消息
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.ApiResponse;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.WechatApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        WechatApi apiInstance = new WechatApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        Object body = null; // Object | 订阅消息数据，开发参考：https://dwz.cn/IXptek5n
+        try {
+            ApiResponse<StringApiResponse> response = apiInstance.wechatSubscribeMSGWithHttpInfo(appKey, body);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WechatApi#wechatSubscribeMSG");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **body** | **Object**| 订阅消息数据，开发参考：https://dwz.cn/IXptek5n | [optional] |
+
+### Return type
+
+ApiResponse<[**StringApiResponse**](StringApiResponse.md)>
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+
+## wechatSubscribeSend
+
+> StringApiResponse wechatSubscribeSend(appKey, body)
+
+小程序-发送订阅消息
+
+发送小程序订阅消息
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.WechatApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        WechatApi apiInstance = new WechatApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        Object body = null; // Object | 订阅消息数据，开发参考：https://dwz.cn/bohXaCnp
+        try {
+            StringApiResponse result = apiInstance.wechatSubscribeSend(appKey, body);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WechatApi#wechatSubscribeSend");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **body** | **Object**| 订阅消息数据，开发参考：https://dwz.cn/bohXaCnp | [optional] |
+
+### Return type
+
+[**StringApiResponse**](StringApiResponse.md)
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+## wechatSubscribeSendWithHttpInfo
+
+> ApiResponse<StringApiResponse> wechatSubscribeSend wechatSubscribeSendWithHttpInfo(appKey, body)
+
+小程序-发送订阅消息
+
+发送小程序订阅消息
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.ApiResponse;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.WechatApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        WechatApi apiInstance = new WechatApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        Object body = null; // Object | 订阅消息数据，开发参考：https://dwz.cn/bohXaCnp
+        try {
+            ApiResponse<StringApiResponse> response = apiInstance.wechatSubscribeSendWithHttpInfo(appKey, body);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WechatApi#wechatSubscribeSend");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **body** | **Object**| 订阅消息数据，开发参考：https://dwz.cn/bohXaCnp | [optional] |
+
+### Return type
+
+ApiResponse<[**StringApiResponse**](StringApiResponse.md)>
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+
+## wechatUrlLinkGenerate
+
+> StringApiResponse wechatUrlLinkGenerate(appKey, body)
+
+小程序-生成网页跳转地址(获取小程序 URL Link，适用于短信、邮件、网页、微信内等拉起小程序的业务场景)
+
+生成小程序的网页跳转地址
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.WechatApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        WechatApi apiInstance = new WechatApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        Object body = null; // Object | 跳转地址数据，开发参考：https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/url-link/urllink.generate.html
+        try {
+            StringApiResponse result = apiInstance.wechatUrlLinkGenerate(appKey, body);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WechatApi#wechatUrlLinkGenerate");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **body** | **Object**| 跳转地址数据，开发参考：https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/url-link/urllink.generate.html | [optional] |
+
+### Return type
+
+[**StringApiResponse**](StringApiResponse.md)
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+## wechatUrlLinkGenerateWithHttpInfo
+
+> ApiResponse<StringApiResponse> wechatUrlLinkGenerate wechatUrlLinkGenerateWithHttpInfo(appKey, body)
+
+小程序-生成网页跳转地址(获取小程序 URL Link，适用于短信、邮件、网页、微信内等拉起小程序的业务场景)
+
+生成小程序的网页跳转地址
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.ApiResponse;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.WechatApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        WechatApi apiInstance = new WechatApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        Object body = null; // Object | 跳转地址数据，开发参考：https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/url-link/urllink.generate.html
+        try {
+            ApiResponse<StringApiResponse> response = apiInstance.wechatUrlLinkGenerateWithHttpInfo(appKey, body);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WechatApi#wechatUrlLinkGenerate");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **body** | **Object**| 跳转地址数据，开发参考：https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/url-link/urllink.generate.html | [optional] |
+
+### Return type
+
+ApiResponse<[**StringApiResponse**](StringApiResponse.md)>
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+
+## wechatUserInfo
+
+> StringApiResponse wechatUserInfo(appKey, openid)
+
+公众号H5-获取用户UnionID
+
+获取公众号H5用户的UnionID
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.WechatApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        WechatApi apiInstance = new WechatApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        String openid = "openid_example"; // String | 用户的OpenID
+        try {
+            StringApiResponse result = apiInstance.wechatUserInfo(appKey, openid);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WechatApi#wechatUserInfo");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **openid** | **String**| 用户的OpenID | [optional] |
+
+### Return type
+
+[**StringApiResponse**](StringApiResponse.md)
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+## wechatUserInfoWithHttpInfo
+
+> ApiResponse<StringApiResponse> wechatUserInfo wechatUserInfoWithHttpInfo(appKey, openid)
+
+公众号H5-获取用户UnionID
+
+获取公众号H5用户的UnionID
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.ApiResponse;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.WechatApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        WechatApi apiInstance = new WechatApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        String openid = "openid_example"; // String | 用户的OpenID
+        try {
+            ApiResponse<StringApiResponse> response = apiInstance.wechatUserInfoWithHttpInfo(appKey, openid);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WechatApi#wechatUserInfo");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **openid** | **String**| 用户的OpenID | [optional] |
+
+### Return type
+
+ApiResponse<[**StringApiResponse**](StringApiResponse.md)>
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+
+## wechatWXACodeGet
+
+> File wechatWXACodeGet(appKey, body)
+
+小程序-获取小程序码
+
+获取小程序码
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.WechatApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        WechatApi apiInstance = new WechatApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        Object body = null; // Object | 小程序码数据，开发参考：https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/qr-code/wxacode.get.html
+        try {
+            File result = apiInstance.wechatWXACodeGet(appKey, body);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WechatApi#wechatWXACodeGet");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **body** | **Object**| 小程序码数据，开发参考：https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/qr-code/wxacode.get.html | [optional] |
+
+### Return type
+
+[**File**](File.md)
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: image/jpeg, text/plain
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+
+## wechatWXACodeGetWithHttpInfo
+
+> ApiResponse<File> wechatWXACodeGet wechatWXACodeGetWithHttpInfo(appKey, body)
+
+小程序-获取小程序码
+
+获取小程序码
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.ApiResponse;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.WechatApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        WechatApi apiInstance = new WechatApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        Object body = null; // Object | 小程序码数据，开发参考：https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/qr-code/wxacode.get.html
+        try {
+            ApiResponse<File> response = apiInstance.wechatWXACodeGetWithHttpInfo(appKey, body);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WechatApi#wechatWXACodeGet");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **body** | **Object**| 小程序码数据，开发参考：https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/qr-code/wxacode.get.html | [optional] |
+
+### Return type
+
+ApiResponse<[**File**](File.md)>
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: image/jpeg, text/plain
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+
+
+## wechatWXACodeGetUnlimited
+
+> File wechatWXACodeGetUnlimited(appKey, body)
+
+小程序-获取小程序码(无限制)
+
+获取无限制的小程序码
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.WechatApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        WechatApi apiInstance = new WechatApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        Object body = null; // Object | 小程序码数据，开发参考：https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/qr-code/wxacode.getUnlimited.html
+        try {
+            File result = apiInstance.wechatWXACodeGetUnlimited(appKey, body);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WechatApi#wechatWXACodeGetUnlimited");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **body** | **Object**| 小程序码数据，开发参考：https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/qr-code/wxacode.getUnlimited.html | [optional] |
+
+### Return type
+
+[**File**](File.md)
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: image/jpeg, text/plain
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+
+## wechatWXACodeGetUnlimitedWithHttpInfo
+
+> ApiResponse<File> wechatWXACodeGetUnlimited wechatWXACodeGetUnlimitedWithHttpInfo(appKey, body)
+
+小程序-获取小程序码(无限制)
+
+获取无限制的小程序码
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.ApiResponse;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.WechatApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        WechatApi apiInstance = new WechatApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        Object body = null; // Object | 小程序码数据，开发参考：https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/qr-code/wxacode.getUnlimited.html
+        try {
+            ApiResponse<File> response = apiInstance.wechatWXACodeGetUnlimitedWithHttpInfo(appKey, body);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WechatApi#wechatWXACodeGetUnlimited");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **body** | **Object**| 小程序码数据，开发参考：https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/qr-code/wxacode.getUnlimited.html | [optional] |
+
+### Return type
+
+ApiResponse<[**File**](File.md)>
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: image/jpeg, text/plain
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+

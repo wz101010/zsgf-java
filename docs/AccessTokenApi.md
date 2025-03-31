@@ -1,0 +1,620 @@
+# AccessTokenApi
+
+All URIs are relative to *https://api.zashigaofa.cn*
+
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**accessTokenDelete**](AccessTokenApi.md#accessTokenDelete) | **DELETE** /AccessToken/{appKey}/{id} | 删除令牌 |
+| [**accessTokenDeleteWithHttpInfo**](AccessTokenApi.md#accessTokenDeleteWithHttpInfo) | **DELETE** /AccessToken/{appKey}/{id} | 删除令牌 |
+| [**accessTokenPost**](AccessTokenApi.md#accessTokenPost) | **POST** /AccessToken/{appKey} | 创建令牌 |
+| [**accessTokenPostWithHttpInfo**](AccessTokenApi.md#accessTokenPostWithHttpInfo) | **POST** /AccessToken/{appKey} | 创建令牌 |
+| [**accessTokenPut**](AccessTokenApi.md#accessTokenPut) | **PUT** /AccessToken/{appKey}/{id} | 更新令牌 |
+| [**accessTokenPutWithHttpInfo**](AccessTokenApi.md#accessTokenPutWithHttpInfo) | **PUT** /AccessToken/{appKey}/{id} | 更新令牌 |
+| [**accessTokens**](AccessTokenApi.md#accessTokens) | **GET** /AccessToken/{appKey} | 令牌列表 |
+| [**accessTokensWithHttpInfo**](AccessTokenApi.md#accessTokensWithHttpInfo) | **GET** /AccessToken/{appKey} | 令牌列表 |
+
+
+
+## accessTokenDelete
+
+> BooleanApiResponse accessTokenDelete(id, appKey)
+
+删除令牌
+
+删除用户令牌
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.AccessTokenApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        AccessTokenApi apiInstance = new AccessTokenApi(defaultClient);
+        Long id = 56L; // Long | 令牌ID
+        String appKey = "appKey_example"; // String | 
+        try {
+            BooleanApiResponse result = apiInstance.accessTokenDelete(id, appKey);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AccessTokenApi#accessTokenDelete");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **Long**| 令牌ID | |
+| **appKey** | **String**|  | |
+
+### Return type
+
+[**BooleanApiResponse**](BooleanApiResponse.md)
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+## accessTokenDeleteWithHttpInfo
+
+> ApiResponse<BooleanApiResponse> accessTokenDelete accessTokenDeleteWithHttpInfo(id, appKey)
+
+删除令牌
+
+删除用户令牌
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.ApiResponse;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.AccessTokenApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        AccessTokenApi apiInstance = new AccessTokenApi(defaultClient);
+        Long id = 56L; // Long | 令牌ID
+        String appKey = "appKey_example"; // String | 
+        try {
+            ApiResponse<BooleanApiResponse> response = apiInstance.accessTokenDeleteWithHttpInfo(id, appKey);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AccessTokenApi#accessTokenDelete");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **Long**| 令牌ID | |
+| **appKey** | **String**|  | |
+
+### Return type
+
+ApiResponse<[**BooleanApiResponse**](BooleanApiResponse.md)>
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+
+## accessTokenPost
+
+> TokenModelApiResponse accessTokenPost(appKey, accessTokenPostRequest)
+
+创建令牌
+
+创建新的用户令牌
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.AccessTokenApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        AccessTokenApi apiInstance = new AccessTokenApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        AccessTokenPostRequest accessTokenPostRequest = new AccessTokenPostRequest(); // AccessTokenPostRequest | 令牌创建请求参数
+        try {
+            TokenModelApiResponse result = apiInstance.accessTokenPost(appKey, accessTokenPostRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AccessTokenApi#accessTokenPost");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **accessTokenPostRequest** | [**AccessTokenPostRequest**](AccessTokenPostRequest.md)| 令牌创建请求参数 | [optional] |
+
+### Return type
+
+[**TokenModelApiResponse**](TokenModelApiResponse.md)
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+## accessTokenPostWithHttpInfo
+
+> ApiResponse<TokenModelApiResponse> accessTokenPost accessTokenPostWithHttpInfo(appKey, accessTokenPostRequest)
+
+创建令牌
+
+创建新的用户令牌
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.ApiResponse;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.AccessTokenApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        AccessTokenApi apiInstance = new AccessTokenApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        AccessTokenPostRequest accessTokenPostRequest = new AccessTokenPostRequest(); // AccessTokenPostRequest | 令牌创建请求参数
+        try {
+            ApiResponse<TokenModelApiResponse> response = apiInstance.accessTokenPostWithHttpInfo(appKey, accessTokenPostRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AccessTokenApi#accessTokenPost");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **accessTokenPostRequest** | [**AccessTokenPostRequest**](AccessTokenPostRequest.md)| 令牌创建请求参数 | [optional] |
+
+### Return type
+
+ApiResponse<[**TokenModelApiResponse**](TokenModelApiResponse.md)>
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+
+## accessTokenPut
+
+> BooleanApiResponse accessTokenPut(id, appKey, accessTokenPutRequest)
+
+更新令牌
+
+更新现有的用户令牌
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.AccessTokenApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        AccessTokenApi apiInstance = new AccessTokenApi(defaultClient);
+        Long id = 56L; // Long | 令牌ID
+        String appKey = "appKey_example"; // String | 
+        AccessTokenPutRequest accessTokenPutRequest = new AccessTokenPutRequest(); // AccessTokenPutRequest | 令牌更新请求参数
+        try {
+            BooleanApiResponse result = apiInstance.accessTokenPut(id, appKey, accessTokenPutRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AccessTokenApi#accessTokenPut");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **Long**| 令牌ID | |
+| **appKey** | **String**|  | |
+| **accessTokenPutRequest** | [**AccessTokenPutRequest**](AccessTokenPutRequest.md)| 令牌更新请求参数 | [optional] |
+
+### Return type
+
+[**BooleanApiResponse**](BooleanApiResponse.md)
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+## accessTokenPutWithHttpInfo
+
+> ApiResponse<BooleanApiResponse> accessTokenPut accessTokenPutWithHttpInfo(id, appKey, accessTokenPutRequest)
+
+更新令牌
+
+更新现有的用户令牌
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.ApiResponse;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.AccessTokenApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        AccessTokenApi apiInstance = new AccessTokenApi(defaultClient);
+        Long id = 56L; // Long | 令牌ID
+        String appKey = "appKey_example"; // String | 
+        AccessTokenPutRequest accessTokenPutRequest = new AccessTokenPutRequest(); // AccessTokenPutRequest | 令牌更新请求参数
+        try {
+            ApiResponse<BooleanApiResponse> response = apiInstance.accessTokenPutWithHttpInfo(id, appKey, accessTokenPutRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AccessTokenApi#accessTokenPut");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **Long**| 令牌ID | |
+| **appKey** | **String**|  | |
+| **accessTokenPutRequest** | [**AccessTokenPutRequest**](AccessTokenPutRequest.md)| 令牌更新请求参数 | [optional] |
+
+### Return type
+
+ApiResponse<[**BooleanApiResponse**](BooleanApiResponse.md)>
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+
+## accessTokens
+
+> AccessTokenListResultApiResponse accessTokens(appKey, userId, skip, take)
+
+令牌列表
+
+获取用户令牌列表
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.AccessTokenApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        AccessTokenApi apiInstance = new AccessTokenApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        Long userId = 56L; // Long | 用户ID
+        Integer skip = 56; // Integer | 跳过的记录数
+        Integer take = 56; // Integer | 获取的记录数
+        try {
+            AccessTokenListResultApiResponse result = apiInstance.accessTokens(appKey, userId, skip, take);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AccessTokenApi#accessTokens");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **userId** | **Long**| 用户ID | [optional] |
+| **skip** | **Integer**| 跳过的记录数 | [optional] |
+| **take** | **Integer**| 获取的记录数 | [optional] |
+
+### Return type
+
+[**AccessTokenListResultApiResponse**](AccessTokenListResultApiResponse.md)
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
+## accessTokensWithHttpInfo
+
+> ApiResponse<AccessTokenListResultApiResponse> accessTokens accessTokensWithHttpInfo(appKey, userId, skip, take)
+
+令牌列表
+
+获取用户令牌列表
+
+### Example
+
+```java
+// Import classes:
+import com.zashigaofa.client.ApiClient;
+import com.zashigaofa.client.ApiException;
+import com.zashigaofa.client.ApiResponse;
+import com.zashigaofa.client.Configuration;
+import com.zashigaofa.client.auth.*;
+import com.zashigaofa.client.models.*;
+import com.zashigaofa.client.api.AccessTokenApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.zashigaofa.cn");
+        
+        // Configure HTTP bearer authorization: Bearer
+        HttpBearerAuth Bearer = (HttpBearerAuth) defaultClient.getAuthentication("Bearer");
+        Bearer.setBearerToken("BEARER TOKEN");
+
+        AccessTokenApi apiInstance = new AccessTokenApi(defaultClient);
+        String appKey = "appKey_example"; // String | 
+        Long userId = 56L; // Long | 用户ID
+        Integer skip = 56; // Integer | 跳过的记录数
+        Integer take = 56; // Integer | 获取的记录数
+        try {
+            ApiResponse<AccessTokenListResultApiResponse> response = apiInstance.accessTokensWithHttpInfo(appKey, userId, skip, take);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AccessTokenApi#accessTokens");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appKey** | **String**|  | |
+| **userId** | **Long**| 用户ID | [optional] |
+| **skip** | **Integer**| 跳过的记录数 | [optional] |
+| **take** | **Integer**| 获取的记录数 | [optional] |
+
+### Return type
+
+ApiResponse<[**AccessTokenListResultApiResponse**](AccessTokenListResultApiResponse.md)>
+
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+
